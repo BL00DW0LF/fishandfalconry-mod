@@ -1,0 +1,20 @@
+[
+{
+  "modid": "FF",
+  "name": "Fish and Falconry",
+  "description": "Adds stuff for blocky fishermen and falconers!",
+  "version": "0.0.1",
+  "url": "https://twitter.com/BL00DW0LF6",
+  "updateUrl": "",
+  "authorList": [
+    "BL00DW0LF"
+  ],
+  "credits": "Written by BL00DW0LF",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
