@@ -6,13 +6,12 @@ import net.minecraft.item.ItemFood;
 
 public class FishSand extends ItemFood{
     
-    public FishSand(int id, int hungerPts, float satDiv10, boolean isWolfMeat) {
-        super(id, hungerPts, satDiv10, isWolfMeat);
+    public FishSand(int id) {
+        super(id, 7, 1f, false);//super(id, hungerPts, satModifier???, isWolfMeat);
         setMaxStackSize(64);
         setCreativeTab(CreativeTabs.tabFood);
         setUnlocalizedName("fishSand");
        
-       //public static Item fishCooked = (new ItemFood(94, 5, 0.6F, false)).setUnlocalizedName("fishCooked");
     }
 
     public void registerIcons(IconRegister iconRegister){

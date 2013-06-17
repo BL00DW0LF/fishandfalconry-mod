@@ -1,5 +1,10 @@
 package ff.lib;
 
 public class ItemIds {
-    public static int FISHSAND=5000;
+    //In-game, add 256 if using /give
+    public static int FISHSAND=1000;
+    public static int WORM=1001;
+    public static int STOBANDIRON=1002;
+    public static int STOB=1003;
+    public static int FFIRON=1004;
 }
