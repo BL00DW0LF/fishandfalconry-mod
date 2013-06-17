@@ -5,12 +5,15 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import ff.blocks.StobBlock;
 import ff.lib.ItemIds;
 
 public class ModItems {
     
     public static FishSand fishSand;
     public static Worm worm;
+    public static Stob stob;
+    public static StobBlock stobBlock;
     
     public static void init() {
         //Fish Sandwich
@@ -24,6 +27,8 @@ public class ModItems {
         LanguageRegistry.addName(worm, "Worm");
         
         //stob
-        
+        stobBlock= new StobBlock(ItemIds.STOBBLOCK);
+        stob = new Stob(ItemIds.STOB, stobBlock);
+        LanguageRegistry.addName(stob, "Stob");
     }
 }

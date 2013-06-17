@@ -22,9 +22,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class FF {
     
     
-    
-    
-    
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
         //register blocks and items, load from config
