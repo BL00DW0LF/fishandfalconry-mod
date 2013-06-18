@@ -8,16 +8,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ff.lib.ItemIds;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class StobBlock extends Block{
-
+public class StobBlock extends BlockContainer{
+    
+    //private int damageVal;
+    
     public StobBlock(int id) {
         super(id, Material.plants);
         float f = 0.23f;
-        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.5F, 0.5F + f);
         // TODO Auto-generated constructor stub
     }
 
@@ -74,7 +79,7 @@ public class StobBlock extends Block{
         return 1;
     }
     
-    @SideOnly(Side.CLIENT)
+    @SideOnly(Side.CLIENT)//may not need this
 
     /**
      * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
@@ -82,6 +87,68 @@ public class StobBlock extends Block{
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
         return ItemIds.STOB;
+    }
+    
+    public int damageDropped(int par1)
+    {
+        return par1;
+    }
+    
+
+
+    @Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    {
+        
+        
+        /*if (verticalPos== 0) 
+            verticalPos++;
+        else if (verticalPos==1)
+            verticalPos++;
+        else{
+            
+        }*/
+        if (!par1World.isRemote){
+            StobBlockData vert = (StobBlockData) par1World.getBlockTileEntity(par2, par3, par4);
+            int num=0;
+            
+            num=vert.blockClicked(par1World);
+            
+            if (num==1) 
+                ;//change texture
+            else if (num==2)
+                ;//change texture
+            else{
+                ;
+            }
+            
+            return true;
+            
+        }
+        return false;
+    }
+    
+    public boolean hasTileEntity(int metadata)
+    {
+        return true;
+    }
+    
+    public TileEntity createNewTileEntity(World par1World)
+    {
+        try
+        {
+            return new StobBlockData();
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    
+    public void updateIcons(IconRegister iconRegister)
+    {
+        blockIcon = iconRegister.registerIcon("mcQuickBuild:MeasuringTape");
     }
     
     public void registerIcons(IconRegister iconRegister){
