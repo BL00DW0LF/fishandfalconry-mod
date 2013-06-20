@@ -1,5 +1,7 @@
 package ff.blocks;
 
+import java.util.Random;
+
 import ff.lib.ItemIds;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -25,18 +27,30 @@ public class StobBlockData extends TileEntity {
         nbt.setInteger("pos", clicks);
     }
     
-    public int blockClicked(World world){
+    public boolean blockClicked(World world){
         clicks++;
         
-        if (clicks>3){
-             
-            EntityItem entityitem = new EntityItem(this.worldObj, (double)this.xCoord+.5d, (double)this.yCoord+.75d, (double)this.zCoord+.5d, new ItemStack(ItemIds.WORM+256,1,0));
-            entityitem.delayBeforeCanPickup = 10;
-            this.worldObj.spawnEntityInWorld(entityitem);
+        if (clicks>2){
+            
+            if (clicks >100)
+                return false;//base case avoids making all the stuff below
+            
+            
+            Random random=new Random();
+            
+            
+            if ((random.nextFloat() * (clicks-2))<1f){
+                EntityItem entityitem = new EntityItem(this.worldObj, (double)this.xCoord+.5d, (double)this.yCoord+.6d, (double)this.zCoord+.5d, new ItemStack(ItemIds.WORM+256,1,0));
+                entityitem.delayBeforeCanPickup = 10;
+                if (this.worldObj.spawnEntityInWorld(entityitem))
+                    
+                    return true;//got worm
+                
+            }
         }
         
         world.notifyBlockChange(xCoord, yCoord, zCoord, 2);
-        return clicks;
+        return false;//didn't get worm
         
     }
 }

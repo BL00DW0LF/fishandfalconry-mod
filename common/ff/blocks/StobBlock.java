@@ -17,12 +17,13 @@ import net.minecraft.world.World;
 
 public class StobBlock extends BlockContainer{
     
-    //private int damageVal;
+ 
     
     public StobBlock(int id) {
         super(id, Material.plants);
         float f = 0.23f;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.5F, 0.5F + f);
+        
         // TODO Auto-generated constructor stub
     }
 
@@ -91,7 +92,8 @@ public class StobBlock extends BlockContainer{
     
     public int damageDropped(int par1)
     {
-        return par1;
+        System.out.println("damage dropped: "+par1);
+        return par1+1;
     }
     
 
@@ -110,17 +112,13 @@ public class StobBlock extends BlockContainer{
         }*/
         if (!par1World.isRemote){
             StobBlockData vert = (StobBlockData) par1World.getBlockTileEntity(par2, par3, par4);
-            int num=0;
             
-            num=vert.blockClicked(par1World);
             
-            if (num==1) 
-                ;//change texture
-            else if (num==2)
-                ;//change texture
-            else{
-                ;
+            if (vert.blockClicked(par1World)){
+                
+                System.out.println(""+this.getDamageValue(par1World, par2, par3, par4));//got worm
             }
+                
             
             return true;
             
@@ -132,6 +130,8 @@ public class StobBlock extends BlockContainer{
     {
         return true;
     }
+    
+    
     
     public TileEntity createNewTileEntity(World par1World)
     {
@@ -145,6 +145,10 @@ public class StobBlock extends BlockContainer{
         }
     }
     
+    
+    public int getMetadata (int damageValue) {
+        return damageValue;
+    }
     
     public void updateIcons(IconRegister iconRegister)
     {
