@@ -17,6 +17,7 @@ public class ModItems {
     public static Worm worm;
     public static Stob stob;
     public static StobBlock stobBlock;
+    public static BaitedPole baitedPole;
     
     public static void init() {
         //Fish Sandwich
@@ -36,6 +37,8 @@ public class ModItems {
         LanguageRegistry.addName(stob, "Stob");
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(stob), true, new Object[]{"ili", " p ", " s ",'l', "logWood", 'i', new ItemStack(Item.ingotIron),'p', "plankWood", 's', "stickWood"}));
         
-        
+        //baited pole
+        baitedPole=new BaitedPole(ItemIds.BAITEDPOLE);
+        LanguageRegistry.addName(baitedPole, "Baited Fishing Pole");
     }
 }

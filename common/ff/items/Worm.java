@@ -2,8 +2,6 @@ package ff.items;
 
 import ff.FF;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-
 import net.minecraft.item.ItemFood;
 
 
