@@ -1,13 +1,16 @@
 package ff.entity;
 
+import java.util.List;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import java.util.List;
+import ff.items.ModItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,8 +22,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityBaitedHook extends Entity
+public class EntityBaitedHook extends EntityFishHook
 {
+
     /** The tile this entity is on, X position */
     private int xTile;
 
@@ -184,7 +188,7 @@ public class EntityBaitedHook extends Entity
      */
     public void onUpdate()
     {
-        super.onUpdate();
+        super.onEntityUpdate();//CHANGED FROM ON UPDATE
 
         if (this.fishPosRotationIncrements > 0)
         {
@@ -204,7 +208,7 @@ public class EntityBaitedHook extends Entity
             {
                 ItemStack itemstack = this.angler.getCurrentEquippedItem();
 
-                if (this.angler.isDead || !this.angler.isEntityAlive() || itemstack == null || itemstack.getItem() != Item.fishingRod || this.getDistanceSqToEntity(this.angler) > 1024.0D)
+                if (this.angler.isDead || !this.angler.isEntityAlive() || itemstack == null || itemstack.getItem() != ModItems.baitedPole || this.getDistanceSqToEntity(this.angler) > 1024.0D)
                 {
                     this.setDead();
                     this.angler.fishEntity = null;
@@ -485,7 +489,7 @@ public class EntityBaitedHook extends Entity
                 this.bobber.motionZ += d2 * d4;
                 b0 = 3;
             }
-            else if (this.ticksCatchable > 0)
+            else if (this.ticksCatchable > 0)//change this for custom catching
             {
                 EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.fishRaw));
                 double d5 = this.angler.posX - this.posX;
@@ -525,4 +529,5 @@ public class EntityBaitedHook extends Entity
             this.angler.fishEntity = null;
         }
     }
+    
 }

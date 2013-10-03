@@ -5,10 +5,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import ff.blocks.StobBlock;
 import ff.blocks.StobBlockData;
+import ff.entity.EntityBaitedHook;
 import ff.lib.ItemIds;
 
 public class ModItems {
