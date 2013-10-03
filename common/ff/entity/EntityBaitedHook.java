@@ -2,6 +2,10 @@ package ff.entity;
 
 import java.util.List;
 
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteArrayDataOutput;
+
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ff.items.ModItems;
@@ -22,7 +26,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityBaitedHook extends EntityFishHook
+public class EntityBaitedHook extends EntityFishHook implements IEntityAdditionalSpawnData
 {
 
     /** The tile this entity is on, X position */
@@ -515,6 +519,17 @@ public class EntityBaitedHook extends EntityFishHook
             this.angler.fishEntity = null;
             return b0;
         }
+    }
+    
+    
+    public void writeSpawnData(ByteArrayDataOutput data)
+    {
+            data.writeInt(this.angler != null ? this.angler.entityId : 0);
+    }
+
+    public void readSpawnData(ByteArrayDataInput data)
+    {
+            this.angler =  (EntityPlayer) this.worldObj.getEntityByID(data.readInt());//had to add a cast here?
     }
 
     /**

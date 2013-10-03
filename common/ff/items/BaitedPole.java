@@ -22,6 +22,7 @@ public class BaitedPole extends Item
         this.setMaxDamage(64);
         this.setMaxStackSize(1);
         this.setCreativeTab(FF.tabFF);
+        
     }
 
     @SideOnly(Side.CLIENT)
@@ -74,8 +75,9 @@ public class BaitedPole extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
+        
         super.registerIcons(par1IconRegister);
-        this.theIcon = par1IconRegister.registerIcon("baitedPole_empty");
+        this.theIcon = par1IconRegister.registerIcon("ff:baitedPole_empty");
     }
 
     @SideOnly(Side.CLIENT)
